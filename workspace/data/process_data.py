@@ -4,6 +4,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
+    """load data"""
     messages = pd.read_csv("disaster_messages.csv")
     categories = pd.read_csv("disaster_categories.csv")
     df = pd.merge(messages,categories,on = "id")
@@ -11,7 +12,7 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
-    
+    """clean all the data"""
     categories = df["categories"].str.split(";",expand = True)
     # select the first row of the categories dataframe
     row = categories.iloc[0:1,]
@@ -35,6 +36,7 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    """saving the data"""
     engine = create_engine('sqlite:///InsertDatabaseName.db')
     df.to_sql('df_uda', engine, index=False)
 
