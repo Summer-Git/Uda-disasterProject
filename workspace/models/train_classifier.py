@@ -37,6 +37,7 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    """进行文本处理"""
     text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
     words = word_tokenize(text)
     words = [w for w in words if w not in stopwords.words("english")]
@@ -52,6 +53,7 @@ def tokenize(text):
 
 
 def build_model():
+    """进使用pipeline搭建机器学习模型"""
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -67,6 +69,7 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    """对模型进行评估"""
     y_pred = model.predict(X_test)
     y_pred_d = pd.DataFrame(y_pred).iloc    
     
