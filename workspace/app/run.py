@@ -63,6 +63,24 @@ def index():
                     'title': "Genre"
                 }
             }
+        },
+         {
+            'data': [
+                Bar(
+                    x=related_names,
+                    y=related_names
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of Message Genres',
+                'yaxis': {
+                    'title': "related_counts"
+                },
+                'xaxis': {
+                    'title': "related"
+                }
+            }
         }
     ]
     
